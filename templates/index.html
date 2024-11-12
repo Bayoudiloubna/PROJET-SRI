@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartDocSearch - Moteur de Recherche</title>
+    <style>
+        /* Styles généraux */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f3f4f6; /* Fond gris clair */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            color: #333; /* Texte gris foncé pour un bon contraste */
+            flex-direction: column;
+            overflow: hidden;
+            background-image: url('/static/images/photo.jpg'); /* Image de fond */
+            background-size: cover; /* Couvre tout le fond */
+            background-position: center; /* Centre l'image de fond */
+            animation: fadeIn 1.5s ease-in-out; /* Animation d'apparition de la page */
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            color: #d7f419;
+            font-weight: bold;
+            letter-spacing: 1px; /* Espacement des lettres pour plus de professionnalisme */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Ombre subtile pour un effet de profondeur */
+            animation: slideIn 1s ease-out; /* Animation de glissement */
+        }
+
+        p {
+            font-size: 1.5em;
+            color: #ffffff; /* Gris plus clair */
+            margin-bottom: 40px;
+            font-style: italic;
+            animation: fadeInText 1s ease-out; /* Animation de texte */
+        }
+
+        form {
+            background-color: rgb(201, 196, 196) transparent; /* Fond transparent */
+            padding: 40px;
+            border-radius: 20px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Ombre douce */
+            animation: fadeInForm 1s ease-out; /* Animation de formulaire */
+        }
+
+        input[type="text"] {
+            width: 100%;
+            max-width: 1000px;
+            padding: 10px;
+            font-size: 1em;
+            border: 2px solid #ccc; /* Bordure grise claire */
+            border-radius: 30px;
+            background-color: #f7f7f7;
+            margin-bottom: 20px;
+            color: #333;
+            transition: all 0.3s ease;
+            animation: bounceIn 1s ease-out; /* Animation d'entrée */
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            background-color: #fff;
+            border-color: #2196F3; /* Bordure bleue lors du focus */
+            box-shadow: 0 0 10px rgba(33, 150, 243, 0.5); /* Ombre bleue douce */
+        }
+
+        button {
+            padding: 15px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #2196F3; /* Bleu clair */
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            animation: popIn 1s ease-out; /* Animation de bouton */
+        }
+
+        button:hover {
+            background-color: #1976D2; /* Bleu foncé au survol */
+            transform: translateY(-5px);
+        }
+
+        button:active {
+            background-color: #1565C0; /* Bleu plus foncé au clic */
+            transform: translateY(0);
+        }
+
+        .footer {
+            margin-top: 50px;
+            font-size: 0.9em;
+            color: white; /* Texte blanc pour le footer */
+            animation: fadeInText 1s ease-out; /* Animation de texte */
+        }
+
+        .footer a {
+            color: white; /* Couleur blanche pour les liens */
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        /* Pas de survol sur les liens */
+        .footer a:hover {
+            color: white; /* Pas de changement de couleur au survol */
+        }
+
+        /* Animation de la page */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInForm {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInText {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+
+        @keyframes bounceIn {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <h1>SmartDocSearch</h1>
+    <p>Trouvez instantanément les informations dont vous avez besoin</p>
+
+    <!-- Formulaire de recherche sans conteneur -->
+    <form action="/search" method="POST">
+        <input type="text" name="query" placeholder="Entrez votre recherche..." required>
+        <br>
+        <button type="submit">🔍 Rechercher</button>
+    </form>
+
+    <div class="footer">
+        <p>© 2024 SmartDocSearch. Tous droits réservés.</p>
+        <p><a href="#">À propos</a> | <a href="#">Contact</a> | <a href="#">Aide</a></p>
+    </div>
+</body>
+</html>
