@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats de la recherche</title>
+    <style>
+        /* Styles communs pour index.html et result.html */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            color: #333;
+            flex-direction: column;
+            overflow: hidden;
+            background-image: url('/static/images/photo1.jpeg');
+            background-size: cover;
+            background-position: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            color: rgb(255, 255, 255);
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            animation: slideIn 1s ease-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 img {
+            width: 80px;
+            height: 80px;
+            margin-right: 15px;
+        }
+
+        p {
+            font-size: 1.5em;
+            color: #ffffff;
+            margin-bottom: 40px;
+            font-style: italic;
+            animation: fadeInText 1s ease-out;
+        }
+
+        .container {
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 1000px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.8); /* Fond plus clair */
+            animation: fadeInForm 1s ease-out;
+        }
+
+        .result-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .result-item {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            transition: background-color 0.3s;
+        }
+
+        .result-item:hover {
+            background-color: #f1f1f1;
+        }
+
+        a {
+            text-decoration: none;
+            color: #2196F3;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #2196F3;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #1976D2;
+            transform: translateY(-5px);
+        }
+
+        .back-btn:active {
+            background-color: #1565C0;
+            transform: translateY(0);
+        }
+
+        /* Animation de la page */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInForm {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInText {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        <img src="/static/images/search (1).png" alt="Logo Recherche">
+        Résultats de la Recherche
+    </h1>
+
+    <div class="container">
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% elif results %}
+            <ul class="result-list">
+                {% for result in results %}
+                    <li class="result-item">
+                        <a href="/download/{{ result.filename }}">{{ result.filename }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Aucun résultat trouvé.</p>
+        {% endif %}
+        
+        <!-- Bouton de retour à la page d'accueil -->
+        <a href="/" class="back-btn">Retour à l'accueil</a>
+    </div>
+</body>
+</html>

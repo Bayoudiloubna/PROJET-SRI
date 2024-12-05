@@ -23,7 +23,7 @@
             color: #333; /* Texte gris foncé pour un bon contraste */
             flex-direction: column;
             overflow: hidden;
-            background-image: url('/static/images/photo.jpg'); /* Image de fond */
+            background-image: url('/static/images/photo1.jpeg'); /* Image de fond */
             background-size: cover; /* Couvre tout le fond */
             background-position: center; /* Centre l'image de fond */
             animation: fadeIn 1.5s ease-in-out; /* Animation d'apparition de la page */
@@ -32,11 +32,20 @@
         h1 {
             font-size: 3.5em;
             margin-bottom: 20px;
-            color: #d7f419;
+            color: rgb(255, 255, 255);
             font-weight: bold;
             letter-spacing: 1px; /* Espacement des lettres pour plus de professionnalisme */
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Ombre subtile pour un effet de profondeur */
             animation: slideIn 1s ease-out; /* Animation de glissement */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 img {
+            width: 80px; /* Taille de l'icône */
+            height: 80px; /* Taille de l'icône */
+            margin-right: 15px; /* Espacement entre l'icône et le texte */
         }
 
         p {
@@ -48,35 +57,16 @@
         }
 
         form {
-            background-color: rgb(201, 196, 196) transparent; /* Fond transparent */
             padding: 40px;
             border-radius: 20px;
-            width: 80%;
-            max-width: 600px;
+            width: 90%; /* S'étend jusqu'à 90% de la largeur de l'écran */
+            max-width: 1000px; /* Limite maximale */
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Ombre douce */
+            margin: 0 auto; /* Centre le formulaire */
             animation: fadeInForm 1s ease-out; /* Animation de formulaire */
         }
 
-        input[type="text"] {
-            width: 100%;
-            max-width: 1000px;
-            padding: 10px;
-            font-size: 1em;
-            border: 2px solid #ccc; /* Bordure grise claire */
-            border-radius: 30px;
-            background-color: #f7f7f7;
-            margin-bottom: 20px;
-            color: #333;
-            transition: all 0.3s ease;
-            animation: bounceIn 1s ease-out; /* Animation d'entrée */
-        }
-
-        input[type="text"]:focus {
-            outline: none;
-            background-color: #fff;
-            border-color: #2196F3; /* Bordure bleue lors du focus */
-            box-shadow: 0 0 10px rgba(33, 150, 243, 0.5); /* Ombre bleue douce */
-        }
+       
 
         button {
             padding: 15px 20px;
@@ -88,6 +78,38 @@
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.3s ease;
             animation: popIn 1s ease-out; /* Animation de bouton */
+        }
+        .search-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-container input[type="text"] {
+            width: 100%;
+            padding: 10px 40px 10px 40px; /* Ajout d'espace à gauche pour l'icône */
+            font-size: 1em;
+            border: 2px solid #ccc; /* Bordure grise claire */
+            border-radius: 30px;
+            background-color: #f7f7f7;
+            margin-bottom: 20px;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .search-container input[type="text"]:focus {
+            outline: none;
+            background-color: #fff;
+            border-color: #2196F3; /* Bordure bleue lors du focus */
+            box-shadow: 0 0 10px rgba(33, 150, 243, 0.5); /* Ombre bleue douce */
+        }
+
+        .search-container img {
+            position: absolute;
+            top: 35%;
+            left: 10px;
+            transform: translateY(-50%);
+            width: 25px; /* Ajustez la taille de l'icône */
+            height: 25px; /* Ajustez la taille de l'icône */
         }
 
         button:hover {
@@ -102,7 +124,7 @@
 
         .footer {
             margin-top: 50px;
-            font-size: 0.9em;
+            font-size: 0.7em;
             color: white; /* Texte blanc pour le footer */
             animation: fadeInText 1s ease-out; /* Animation de texte */
         }
@@ -152,14 +174,21 @@
     </style>
 </head>
 <body>
-    <h1>SmartDocSearch</h1>
-    <p>Trouvez instantanément les informations dont vous avez besoin</p>
+    <h1>
+        <img src="/static/images/search (1).png" alt="Logo Recherche">
+        SmartDocSearch
+    </h1>
+    <p>Accédez rapidement aux réponses que vous cherchez, et simplifiez vos recherches avec des résultats clairs et pertinents</p>
 
     <!-- Formulaire de recherche sans conteneur -->
     <form action="/search" method="POST">
-        <input type="text" name="query" placeholder="Entrez votre recherche..." required>
+        <div class="search-container">
+            <!-- Icône de recherche en PNG -->
+            <img src="/static/images/search.png" alt="Icône de recherche">
+            <input type="text" name="query" placeholder="Entrez votre recherche..." required>
+        </div>
         <br>
-        <button type="submit">🔍 Rechercher</button>
+        <button type="submit">Rechercher</button>
     </form>
 
     <div class="footer">
