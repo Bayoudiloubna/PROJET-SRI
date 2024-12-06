@@ -72,7 +72,7 @@ def search_documents(query, session):
     # Trier les documents par pertinence
     sorted_scores = sorted(scores.items(), key=lambda x: x[1], reverse=True)
 
-    # Récupérer les 5 documents les plus pertinents, sans le score
+    # Récupérer les 6 documents les plus pertinents, sans le score
     top_documents = []
     for doc_id, score in sorted_scores[:6]:  # Limité à 6 documents
         document = session.query(Document).filter_by(id=doc_id).first()
